@@ -1,0 +1,14 @@
+*
+
+!*.md
+!*.ipynb
+!*.py
+!*.tex
+!*.sty
+!*.bib
+!*.gitignore
+!*.svg
+!ms
+
+sandbox.ipynb
+
