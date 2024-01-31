@@ -73,3 +73,8 @@ def get_c_spd(c_mean, t_start):
     slp = stats.linregress(t[t_start <= t], c_mean_unw[t_start <= t])[0]
     
     return slp
+
+
+def get_ang_diff(th_0, th_1):
+    """Get signed angular difference of th_1 - th_0."""
+    return np.arctan2(np.sin(th_1 - th_0), np.cos(th_1 - th_0))

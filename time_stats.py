@@ -244,9 +244,24 @@ def xcov_conv_tri(x, y):
     return xcov_temp/tri, tcov
 
 
-def get_isi_cv_2(spikes):
+def get_isi_cv_1(spikes, min_spikes=3):
+    """Get ISI CV for stationary spike train."""
     tspks = np.nonzero(spikes)[0]
     isis = np.diff(tspks)
+    
+    if len(tspks) < min_spikes:
+        return np.nan
+    
+    return np.std(isis)/np.mean(isis)
+
+
+def get_isi_cv_2(spikes, min_spikes=3):
+    """Get ISI CV for nonstationary spike train."""
+    tspks = np.nonzero(spikes)[0]
+    isis = np.diff(tspks)
+    
+    if len(tspks) < min_spikes:
+        return np.nan
     
     cv_2s = 2*np.abs(isis[1:] - isis[:-1])/(isis[1:] + isis[:-1])
     
