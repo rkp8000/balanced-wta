@@ -3,7 +3,6 @@ from scipy import stats
 import sys
 
 
-
 def norm(x, mu, sgm):
     if sgm == 0:
         temp = np.zeros(x.shape)
@@ -14,7 +13,7 @@ def norm(x, mu, sgm):
     return stats.norm.pdf(x, loc=mu, scale=sgm)
 
 
-def phi(x, mu, sgm):
+def phi(x, mu, sgm):  # cumulative normal
     if sgm == 0:
         temp = (x >= 0).astype(float)
         temp[x == 0] = .5
@@ -28,7 +27,7 @@ class MFT(object):
     
     def __init__(self, x_lo, x_hi, dx):
         self.dx = dx
-        self.x = np.arange(x_lo, x_hi, dx)
+        self.x = np.arange(x_lo, x_hi, dx)  # integration domain for MFT integral
 
     def alph(self, r, u, v, D, mu_j, sgm_j, N=np.inf):
         """

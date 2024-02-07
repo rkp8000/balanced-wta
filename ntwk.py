@@ -28,7 +28,7 @@ def gsoftmax(z, g):
 class SoftmaxNtwk(object):
     
     def __init__(self, J):
-        """J is an DxDxNxN array"""
+        """J is a DxDxNxN array"""
         assert J.ndim == 4
         
         self.J = J
